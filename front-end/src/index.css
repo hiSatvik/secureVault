@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, 'Outfit', sans-serif, "Source Code Pro", monospace;
+  line-height: 1.6;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-family: 'Outfit', sans-serif;
+}
+
+p {
+  font-family: 'Source Code Pro', monospace;
+}
+
+button {
+  font-family: "Source Code Pro", monospace;
+}
+
+body {
+  margin-top: 20px;
+  padding: 0px 40px;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    #f5f2ee 0%,
+    #e6dfd8 100%
+  ) ;
+}
