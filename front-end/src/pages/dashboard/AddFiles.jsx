@@ -2,6 +2,7 @@ import { Folder, File } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { encrypted } from "../../utils/encryption";
 import { uploadEncryptedFile } from "../../utils/uploadService";
+import localforage from "localforage";
 
 export default function AddFiles() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -54,26 +55,32 @@ export default function AddFiles() {
     try {
       console.log("Generating encrypted Data");
       if(selectedFile) {
-        const {encryptedData, iv} = await encrypted(selectedFile);
+        const {encryptData, iv, key} = await encrypted(selectedFile);
 
-        await uploadEncryptedFile({
-          encryptedData, iv, fileName: selectedFile.name
+        const response = await uploadEncryptedFile({
+          encryptedData: encryptData,
+          iv,
+          fileName: selectedFile.name
         });
 
-        
+        const savedFile = response.data.id;
+        await localforage.setItem(`key_${savedFile}`, key);
 
-        console.log("File encrypted and uploaded");
+        console.log("Single File encrypted and uploaded");
       }
 
       if(selectedFolder) {
         for(let file in selectedFolder) {
-          const {encryptedData, iv} = await uploadEncryptedFile(file);
+          const {encryptedData, iv, key} = await encrypted(file);
 
-          await uploadEncryptedFile({
+          const response = await uploadEncryptedFile({
             encryptedData,
             iv,
             fileName: file.name,
           });
+
+          const savedFileId = response.data.id;
+          await localforage.setItem(`key_${savedFileId}`, key);
         }
 
         console.log("Folder encrypted");
