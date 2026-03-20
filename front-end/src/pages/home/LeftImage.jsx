@@ -1,5 +1,3 @@
-import rose from "../../assets/rose.jpg";
-
 export default function LeftImage() {
     return (
         <div className="relative w-full max-w-md mx-auto lg:ml-auto mt-10 lg:mt-0">
@@ -8,7 +6,7 @@ export default function LeftImage() {
             {/* The rounded-[2.5rem] gives it that lovely soft curve! */}
             <div className="relative z-10 overflow-hidden rounded-[2.5rem] bg-[#D8D0C5] aspect-[4/5] shadow-sm">
                 <img
-                    src={rose}
+                    src=""
                     alt="Happy smiling user"
                     className="w-full h-full object-cover"
                 />

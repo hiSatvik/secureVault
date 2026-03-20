@@ -1,5 +1,3 @@
-import Rose from "../../assets/rose.jpg"
-
 export default function LeftSection() {
     return (
         <div className="flex flex-row flex-wrap">

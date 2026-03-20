@@ -60,6 +60,8 @@ export default function AddFiles() {
           encryptedData, iv, fileName: selectedFile.name
         });
 
+        
+
         console.log("File encrypted and uploaded");
       }
 

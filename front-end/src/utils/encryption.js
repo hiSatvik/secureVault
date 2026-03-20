@@ -27,3 +27,16 @@ export async function encrypted(file) {
         key,
     };
 }
+
+export async function decrypted(encryptedBuffer, key, iv) {
+    const decryptBuffer = await crypto.subtle.decrypt(
+        {
+            name: "AES-GCM",
+            iv: iv
+        },
+        key,
+        encryptedBuffer
+    );
+
+    return new Blob([decryptBuffer]);
+}
