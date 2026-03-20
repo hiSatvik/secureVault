@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import AnchorLink from "./Components/AnchorLink"
-import Layout from "./pages/home/layout"
+import LeftSection from "./pages/dashboard/LeftSection";
+import AddFiles from "./pages/dashboard/AddFiles";
 
 export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />
+      element: <AddFiles />
     }
   ])
 
